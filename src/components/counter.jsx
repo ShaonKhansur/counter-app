@@ -5,19 +5,36 @@ class Counter extends Component {
         count: 0
      }
 
-     handleIncrease = () => {
+    handleIncrease = () => {
         const {count} = this.state;
         this.setState({count: count + 1});
     };
+
+    handleDecrease = () => {
+        const {count} = this.state;
+        this.setState({count: count - 1});
+    }
+
+    badgeFormatter = () => {
+        let badge = "badge m-2 badge-"
+        return (this.state.count === 0) ? badge+= 'warning' : badge+= 'secondary';
+    }
     render() {
         return ( 
             <div>
-                <label>{this.state.count}</label>
+                <lable className={this.badgeFormatter()}>{this.state.count}</lable>
                 <button 
-                    className="btn btn-primary"
+                    className="btn btn-primary m-2"
                     onClick={this.handleIncrease}
                     >
-                    Increase
+                    +
+                </button>
+                <button 
+                    disabled={(this.state.count === 0) ? true : false}
+                    className="btn btn-primary"
+                    onClick={this.handleDecrease}
+                    >
+                    -
                 </button>
             </div>
             );
