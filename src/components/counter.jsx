@@ -18,6 +18,7 @@ class Counter extends Component {
   countFormatter = () => {
     return this.state.value === 0 ? "Zero" : this.state.value;
   };
+  
   render() {
     return (
       <div>
